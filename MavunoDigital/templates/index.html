@@ -10,7 +10,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{%static 'img/hero1.jpg'%}" rel="icon">
+    <link href="{%static 'img/bg_img2.jpg' %}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,26 +57,25 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="" class="nav-item nav-link active">Home</a>
-                         <a href="myorders.html" class="nav-item nav-link">My Orders</a>
-                         <a href="menu.html" class="nav-item nav-link">Inbox</a>
+                         <a href="{% url 'send_message' %}" class="nav-item nav-link">My Orders</a>
+                         <a href="{% url 'inbox' %}" class="nav-item nav-link">Inbox</a>
                         <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu m-0">
-                                <a href="vegetables.html" class="dropdown-item">Vegetables</a>
-                                <a href="fruits.html" class="dropdown-item">Fruits</a>
-                                <a href="cereals.html" class="dropdown-item">Cereals</a>
+                                <a href="{% url 'veges' %}" class="dropdown-item">Vegetables</a>
+                                <a href="{% url 'fruits' %}" class="dropdown-item">Fruits</a>
+                                <a href="{% url 'cereals' %}" class="dropdown-item">Cereals</a>
                             </div>
                              </div>
                          <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
                             <div class="dropdown-menu m-0">
-                                <a href="mkulima.html" class="dropdown-item">Mavuno Mkulima</a>
+                                <a href="{% url 'product_add' %}" class="dropdown-item">Mavuno Mkulima</a>
                                 <a href="{% url 'consumer' %}" class="dropdown-item">Mavuno Consumer</a>
-                                <a href="delivery.html" class="dropdown-item">Mavuno Deliveries</a>
                             </div>
                              </div>
                          <a href="{% url 'farmer' %}" class="nav-item nav-link">Sell On Mavuno</a>
-                <a href="contact.html" class="nav-item nav-link">Contact us</a>
+                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact us</a>
                         </div>
                     </div>
             </nav>
@@ -88,18 +87,18 @@
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Fresh Products<br>At your Door</h1>
                             <p class="text-white animated slideInLeft mb-4 pb-2">Find you potential consumers and </p>
-                           <!-- <a href="{% url 'farmer' %}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Sell On Mavuno</a>-->
+                           <a href="{% url 'f_dash' %}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Sell On Mavuno</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end wow fadeIn" data-wow-delay="0.5">
                             <div class="row">
                                 <div class="col-12 text-center">
-                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/hero.png' %}" alt="">
+                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/bg_img1.png' %}" alt="">
                                 </div>
                                 <div class="col-12 text-start" style="margin-top: -150px">
-                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/hero1.jpg' %}" alt="">
+                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/bg_img2.jpg' %}" alt="">
                                 </div>
                                  <div class="col-12 text-end" style="margin-top: -150px">
-                                        <img class="img-fluid w-130 rounded-circle bg-light p-3" src="{% static 'img/hero4.jpg'%}">
+                                        <img class="img-fluid w-130 rounded-circle bg-light p-3" src="{% static 'img/bg_img4.jpg' %}" alt="">
                             </div>
                       </div>
                     </div>
@@ -108,48 +107,23 @@
             </div>
         </div>
         <!-- Navbar & Hero End -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            {% for products in show_product%}
+                  <div class="col-sm-3 product">
+                   {% if products.product_image %}
+                         <img src="{{ products.product_image.url }}" alt="product_image" class="product_image" height="100%" width="80%">
 
-        <!-- product start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Our Fresh Products</h5>
-                    <h1 class="mb-5">Most Popular Items</h1>
-                </div>
-                <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                                <i class="fa fa-coffee fa-2x text-primary"></i>
-                                <div class="ps-3">
-                                    <small class="text-body">Sweet</small>
-                                    <h6 class="mt-n1 mb-0">Fruits</h6>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
-                                <i class="fa fa-hamburger fa-2x text-primary"></i>
-                                <div class="ps-3">
-                                    <small class="text-body">Clean</small>
-                                    <h6 class="mt-n1 mb-0">Cereals</h6>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
-                                <i class="fa fa-utensils fa-2x text-primary"></i>
-                                <div class="ps-3">
-                                    <small class="text-body">fresh</small>
-                                    <h6 class="mt-n1 mb-0">Vegetables</h6>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                  {% endif %}
+                  <br>
+                <p><b>PRODUCT NAME:</b> {{ products.product_name }}<br><b>PRODUCT CATEGORY:</b> {{ products.product_category }}<br><b>PRODUCT DESCRIPTION:</b> {{ products.product_description }}<br><b>QUANTITY: </b>{{ products.quantity }}<br><b>PRICE:</b>{{ products.price}}<br> <b>DELIVERY MODE:</b> {{ products.delivery_mode}}</p>
 
-                </div>
-            </div>
-        <!-- Menu End -->
+                  </div>
+            {% endfor %}
+    </div>
+</div>
+</div>
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -210,7 +184,7 @@
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
