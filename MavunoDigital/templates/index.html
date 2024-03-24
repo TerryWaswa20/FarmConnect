@@ -118,7 +118,7 @@
                   {% endif %}
                   <br>
                 <p><b>PRODUCT NAME:</b> {{ products.product_name }}<br><b>PRICE:</b>{{ products.price}}</p>
-
+ <a href="{% url 'add_to_cart' products.id %}" class="btn btn-primary">Add to Cart</a>
 
                   </div>
             {% endfor %}
