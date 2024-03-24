@@ -57,7 +57,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="" class="nav-item nav-link active">Home</a>
-                         <a href="{% url 'dash' %}" class="nav-item nav-link">My Orders</a>
+                         <a href="{% url 'inbox' %}" class="nav-item nav-link">My Orders</a>
                          <a href="#" class="nav-item nav-link">Inbox</a>
                         <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
@@ -113,13 +113,30 @@
             <div class="container">
                  <div class="col-lg-6 wow fadeIn bg-success text-dark" data-wow-delay="0.1s">
                      <h1 class="bg-success text-primary">Login To Your Account</h1>
-                     <form action="" method=POST >
+                     <form action="{% url 'f_login' %}" method=POST >
 
 
 {% csrf_token %}
-{{ user_form.as_p }}
 
-<button type="submit" class="btn btn-lg btn-primary">Login</button>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="username" placeholder="Enter Your Username">
+                            </div>
+
+                               <div class="mb-3">
+                                <input type="password" class="form-control" name="password" placeholder="Enter Your Password">
+                            </div>
+                             <br><br>
+                         <div class="row">
+                             <div class="col-3">
+                                   <button type="submit" class="btn btn-info">Login</button>
+
+                             </div>
+                             <div class="col-4">
+                                 <a href="{% url 'farmer' %}">Don't have an account! Register</a>
+                             </div>
+                         </div>
+
+
                      </form>
                  </div>
             </div>

@@ -34,6 +34,13 @@ urlpatterns = [
     path('dash', views.f_dashboard, name='f_dash'),
     path('send', views.send_message, name='send_message'),
     path('inbox', views.inbox, name='inbox'),
+    path('verify', views.verification, name='verify'),
+    path('panel', views.verify_farmer, name='panel'),
+    path('token', views.token, name='token'),
+    path('pay', views.pay, name='pay'),
+
+
+
 
 
 

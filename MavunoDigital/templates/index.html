@@ -57,8 +57,8 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="" class="nav-item nav-link active">Home</a>
-                         <a href="{% url 'send_message' %}" class="nav-item nav-link">My Orders</a>
-                         <a href="{% url 'inbox' %}" class="nav-item nav-link">Inbox</a>
+                         <a href="{% url 'pay' %}" class="nav-item nav-link">My Orders</a>
+                         <a href="{% url 'token' %}" class="nav-item nav-link">Inbox</a>
                         <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu m-0">
@@ -87,7 +87,7 @@
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Fresh Products<br>At your Door</h1>
                             <p class="text-white animated slideInLeft mb-4 pb-2">Find you potential consumers and </p>
-                           <a href="{% url 'f_dash' %}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Sell On Mavuno</a>
+                           <a href="{% url 'c_login' %}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Sell On Mavuno</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end wow fadeIn" data-wow-delay="0.5">
                             <div class="row">
@@ -117,7 +117,8 @@
 
                   {% endif %}
                   <br>
-                <p><b>PRODUCT NAME:</b> {{ products.product_name }}<br><b>PRODUCT CATEGORY:</b> {{ products.product_category }}<br><b>PRODUCT DESCRIPTION:</b> {{ products.product_description }}<br><b>QUANTITY: </b>{{ products.quantity }}<br><b>PRICE:</b>{{ products.price}}<br> <b>DELIVERY MODE:</b> {{ products.delivery_mode}}</p>
+                <p><b>PRODUCT NAME:</b> {{ products.product_name }}<br><b>PRICE:</b>{{ products.price}}</p>
+
 
                   </div>
             {% endfor %}

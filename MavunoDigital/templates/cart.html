@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Cart</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.product_name }}</td>
+                <td>{{ item.product_quantity }}</td>
+                <td>{{ item.product.product_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Total Price: {{ total_price }}</p>
+</body>
+</html>
