@@ -38,9 +38,17 @@ urlpatterns = [
     path('panel', views.verify_farmer, name='panel'),
     path('token', views.token, name='token'),
     path('pay', views.pay, name='pay'),
+   # path('add_to_cart', views.add_to_cart, name='add_to_cart'),
+    path('cart_view', views.cart_view, name='cart_view'),
+    path('add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('delete_item/<int:item_id>/', views.delete_item, name='delete_item'),
+    path('payment', views.payment, name='payment'),
 
-
-
+#####mpesa
+    path('token', views.token, name='token'),
+    path('pay', views.pay, name='pay'),
+    path('stk', views.stk, name="stk")
+ 
 
 
 
