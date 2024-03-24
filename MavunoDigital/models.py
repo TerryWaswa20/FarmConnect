@@ -31,11 +31,6 @@ class Product(models.Model):
         return self.product_name + ' ' + self.product_category + ' ' + self.product_description
 
 
-class CartItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=1)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-
 
 class Farmer(models.Model):
     PENDING = 'Pending'
@@ -65,11 +60,11 @@ class Cart(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
 
+
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=1)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-
-
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE,null='True', blank='True')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,null='True', blank='True')
+    quantity = models.PositiveIntegerField(default=1,null='True', blank='True')
+    price = models.DecimalField(max_digits=10, decimal_places=2,null='True', blank='True')
+    #user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 

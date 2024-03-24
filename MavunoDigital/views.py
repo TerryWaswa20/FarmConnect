@@ -91,23 +91,57 @@ def product_add(request):
     return render(request, 'product_form.html', {'form': form})
 
 
+
+from django.db import IntegrityError
+from django.shortcuts import redirect, get_object_or_404
+from .models import Product, CartItem
+
 def add_to_cart(request, product_id):
-    product = Product.objects.get(pk=product_id)
+    product = get_object_or_404(Product, pk=product_id)
     if request.user.is_authenticated:
-        cart_item, created = CartItem.objects.get_or_create(product=product, user=request.user)
+        cart_item, created = CartItem.objects.get_or_create(product=product)
         if not created:
-            cart_item.product_quantity += 1
+            cart_item.quantity += 1  # Increment the quantity directly
             cart_item.save()
     else:
         pass
+    
+    # Set the price field value before saving the CartItem instance
+    cart_item.price = product.price
+    
+    try:
+        cart_item.save()
+    except IntegrityError as e:
+        # Handle the IntegrityError (e.g., log the error, display a message to the user)
+        pass
+    
     return redirect('cart_view')
 
 
+
 def cart_view(request):
-    cart_items = CartItem.objects.filter(user=request.user)
-    total_price = sum(item.product.product_price * item.product_quantity for item in cart_items)
+    cart_items = CartItem.objects.filter()
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
     return render(request, 'cart.html', {'cart_items': cart_items, 'total_price': total_price})
 
+def payment(request):
+    cart_items = CartItem.objects.filter()
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
+    return render(request, 'payment.html', {'total_price': total_price})
+
+def delete_item(request, item_id):
+    # Retrieve the cart item object
+    cart_item = get_object_or_404(CartItem, pk=item_id)
+    
+    # Check if the request method is POST (to avoid accidental deletions)
+    if request.method == 'POST':
+        # Delete the cart item
+        cart_item.delete()
+        # Redirect to the cart view
+        return redirect('cart_view')
+    else:
+        # If the request method is not POST, handle it accordingly (e.g., show an error message)
+        pass
 
 def verification(request):
     submitted = False
@@ -181,10 +215,10 @@ def inbox(request):
     sent_messages = Message.objects.filter(sender=request.user.first_name)
     return render(request, 'inbox.html', {'received_message':received_message, 'sent_messages':sent_messages})
 
-
+###Mpesa intergration
 def token(request):
-    consumer_key = 'SPrFYB05RQVPYy5TyBWAiAhKLLEtpRsfBlTKV278Ditx03iy'
-    consumer_secret = 'lBpL3FudbozKadm9ZqU8996KQsLoONKGKXjlcOJGR5uZ5gbXr7LFuj3aHf3Q3jBi'
+    consumer_key = '77bgGpmlOxlgJu6oEXhEgUgnu0j2WYxA'
+    consumer_secret = 'viM8ejHgtEmtPTHd'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 
     r = requests.get(api_URL, auth=HTTPBasicAuth(
@@ -192,37 +226,38 @@ def token(request):
     mpesa_access_token = json.loads(r.text)
     validated_mpesa_access_token = mpesa_access_token["access_token"]
 
-    return render(request, 'token.html', {"token": validated_mpesa_access_token})
+    return render(request, 'token.html', {"token":validated_mpesa_access_token})
+
 
 
 def pay(request):
-    if request.method == "POST":
-        phone = request.POST.get('phone')
-        amount = request.POST.get('amount')
-        if phone and amount:  # Check if phone and amount are provided
-            access_token = MpesaAccessToken.validated_mpesa_access_token
-            api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-            headers = {"Authorization": "Bearer %s" % access_token}
-            payload = {
-                "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,
-                "Password": LipanaMpesaPpassword.decode_password,
-                "Timestamp": LipanaMpesaPpassword.lipa_time,
-                "TransactionType": "CustomerPayBillOnline",
-                "Amount": amount,
-                "PartyA": phone,
-                "PartyB": LipanaMpesaPpassword.Business_short_code,
-                "PhoneNumber": phone,
-                "CallBackURL": "https://example.com/mpesa/callback/",  # Replace with your actual callback URL
-                "AccountReference": "Mavuno Digital",
-                "TransactionDesc": "Web Development Charges"
-            }
+    if request.method =="POST":
+        phone = request.POST['phone']
+        amount = request.POST['amount']
+        access_token = MpesaAccessToken.validated_mpesa_access_token
+        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+        headers = {"Authorization": "Bearer %s" % access_token}
+        request = {
+            "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,
+            "Password": LipanaMpesaPpassword.decode_password,
+            "Timestamp": LipanaMpesaPpassword.lipa_time,
+            "TransactionType": "CustomerPayBillOnline",
+            "Amount": amount,
+            "PartyA": phone,
+            "PartyB": LipanaMpesaPpassword.Business_short_code,
+            "PhoneNumber": phone,
+            "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+            "AccountReference": "MavunoDigital",
+            "TransactionDesc": "MavunoDigital Charges"
+        }
 
-            response = requests.post(api_url, json=payload, headers=headers)
-            if response.status_code == 200:
-                return HttpResponse("success")
-            else:
-                return HttpResponse("Failed to initiate payment", status=response.status_code)
-        else:
-            return HttpResponse("Phone number and amount are required for payment", status=400)
-    else:
-        return render(request, 'pay.html')
+        
+
+
+
+    response = requests.post(api_url, json=request, headers=headers)
+    return HttpResponse("success")
+
+
+def stk(request):
+    return render(request, 'pay.html', {'navbar':'stk'})
