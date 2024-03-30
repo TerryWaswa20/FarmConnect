@@ -47,18 +47,20 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                <div class="profile">
                 <a href="" class="navbar-brand p-0">
                     <h1 class="text-white m-0"><i class="fa fa-shopping-cart me-3 text-primary"></i>Mavuno<span> Digital</span></h1>
                     <h1 class="text-info "><i>Empowering Smart<br>Agriculture</i></h1>
                 </a>
+
+
+                    </div>
                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="" class="nav-item nav-link active">Home</a>
-                         <a href="{% url 'pay' %}" class="nav-item nav-link">My Orders</a>
-                         <a href="{% url 'token' %}" class="nav-item nav-link">Inbox</a>
                         <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu m-0">
@@ -70,11 +72,25 @@
                          <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
                             <div class="dropdown-menu m-0">
-                                <a href="{% url 'product_add' %}" class="dropdown-item">Mavuno Mkulima</a>
+                                <a href="#" class="dropdown-item">Mavuno Mkulima</a>
                                 <a href="{% url 'consumer' %}" class="dropdown-item">Mavuno Consumer</a>
                             </div>
                              </div>
-                         <a href="{% url 'farmer' %}" class="nav-item nav-link">Sell On Mavuno</a>
+                          <div class="nav-item dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user"></i>Sell On Mavuno</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'f_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'farmer' %}" class="dropdown-item">Register</a>
+                            </div>
+                             </div>
+                        <div class="nav-item dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user"></i>Profile</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'c_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'consumer' %}" class="dropdown-item">Login New Account</a>
+                            </div>
+                             </div>
+
                 <a href="{% url 'contact' %}" class="nav-item nav-link">Contact us</a>
                         </div>
                     </div>
@@ -87,18 +103,17 @@
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Fresh Products<br>At your Door</h1>
                             <p class="text-white animated slideInLeft mb-4 pb-2">Find you potential consumers and </p>
-                           <a href="{% url 'c_login' %}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Sell On Mavuno</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end wow fadeIn" data-wow-delay="0.5">
                             <div class="row">
                                 <div class="col-12 text-center">
-                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/bg_img1.png' %}" alt="">
+                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/mavuno8.jpg' %}" alt="">
                                 </div>
                                 <div class="col-12 text-start" style="margin-top: -150px">
-                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/bg_img2.jpg' %}" alt="">
+                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/mavuno1.jpg' %}" alt="">
                                 </div>
                                  <div class="col-12 text-end" style="margin-top: -150px">
-                                        <img class="img-fluid w-130 rounded-circle bg-light p-3" src="{% static 'img/bg_img4.jpg' %}" alt="">
+                                        <img class="img-fluid w-130 rounded-circle bg-light p-3" src="{% static 'img/mavuno5.png' %}" alt="">
                             </div>
                       </div>
                     </div>
@@ -118,7 +133,13 @@
                   {% endif %}
                   <br>
                 <p><b>PRODUCT NAME:</b> {{ products.product_name }}<br><b>PRICE:</b>{{ products.price}}</p>
-
+                  <div class="cart">
+                      <div class="row">
+                          <div class="col-8">
+ <a href="{% url 'add_to_cart' products.id %}" class="btn btn-primary">Add to Cart</a>
+                              </div>
+                          </div>
+                  </div>
 
                   </div>
             {% endfor %}
@@ -164,8 +185,6 @@
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a class="border-bottom" href="#">Mavuno Digital</a>, All Right Reserved.
-
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
 							Designed By <a class="border-bottom" href="https://htmlcodex.com">Terry Waswa Sites</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">

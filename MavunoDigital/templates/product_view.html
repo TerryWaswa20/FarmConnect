@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Uploaded</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333; /* Dark text color */
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #008000; /* Green color for header */
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+            color: #008000; /* Green color for paragraph */
+        }
+        a {
+            color: #008000; /* Green color for links */
+            text-decoration: none; /* Remove underline from links */
+            margin-left: 20px; /* Add margin to separate links */
+        }
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        .btn-primary {
+            background-color: #008000; /* Green color for primary button */
+            color: #fff; /* White text color for button */
+            padding: 10px 20px; /* Add padding to button */
+            border: none; /* Remove border from button */
+            border-radius: 5px; /* Add border radius to button */
+            text-decoration: none; /* Remove default button styles */
+        }
+        .btn-primary:hover {
+            background-color: #005700; /* Darker green color on hover */
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}" style="margin-left: 20px;">Home</a>
+    <h1>My Uploaded Products</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Uploaded On</th>
+                <th>Status</th>
+                <th>Delivery Mode</th>
+                <th>Action</th> <!-- New column for delete action -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in product_items %}
+            <tr>
+                <td>{{ item.product_name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.posted_at }}</td>
+                <td>{{ item.is_sell }}</td>
+                <td>{{ item.delivery_mode }}</td>
+                <td>
+                    <form action="{% url 'delete_product' item.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+        <a href="{% url 'f_dash' %}" class="btn btn-primary">Back to Dashboard</a>
+</body>
+</html>

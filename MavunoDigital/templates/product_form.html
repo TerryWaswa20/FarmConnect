@@ -47,9 +47,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="" class="nav-item nav-link active">Home</a>
-                         <a href="myorders.html" class="nav-item nav-link">My Orders</a>
-                         <a href="menu.html" class="nav-item nav-link">Inbox</a>
+                        <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
                         <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu m-0">
@@ -63,10 +61,8 @@
                             <div class="dropdown-menu m-0">
                                 <a href="{% url 'product_add' %}" class="dropdown-item">Mavuno Mkulima</a>
                                 <a href="{% url 'consumer' %}" class="dropdown-item">Mavuno Consumer</a>
-                                <a href="delivery.html" class="dropdown-item">Mavuno Deliveries</a>
                             </div>
                              </div>
-                         <a href="{% url 'farmer' %}" class="nav-item nav-link">Sell On Mavuno</a>
                 <a href="contact.html" class="nav-item nav-link">Contact us</a>
                         </div>
                     </div>

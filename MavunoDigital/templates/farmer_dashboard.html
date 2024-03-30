@@ -57,26 +57,34 @@
                     <div class="sidebar" style="padding-top: 20px">
                      <!-- <h2 style="color: #0d6efd; text-align: center; font-size: large">Dashboard</h2>-->
                      <ul style="list-style-type: none; padding: 0">
-                   <li><a href="{% url 'home' %}" style="color: #0d1425;text-decoration: none;display: block; border-top-left-radius: 30px;border-bottom-left-radius: 30px"><i class="fa fa-home"></i>Dashboard</a> </li>
-                         <li><a href="{% url 'orders' %}"><i class="fa fa-shopping-bag bag"></i>Customers</a> </li>
-                   <li><a href="#"><i class="fa fa-envelope"></i>Messages</a> </li>
-                 <li><a href="#"><i class="fa fa-question"></i>Help</a> </li>
-                 <li><a href="#"><i class="fa fa-cog"></i>Settings</a> </li>
-                 <li><a href="#"><i class="fa fa-sign-out"></i>Log Out</a> </li>
+                   <li><a href="{% url 'dash_b' %}" style="color: #0d1425;text-decoration: none;display: block; border-top-left-radius: 30px;border-bottom-left-radius: 30px">Dashboard</a> </li>
+                         <li><a href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a> </li>
+                   <li>   <div class="nav-item dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-edit white"></i>Categories</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'veges' %}" class="dropdown-item">Vegetables</a>
+                                <a href="{% url 'fruits' %}" class="dropdown-item">Fruits</a>
+                                <a href="{% url 'cereals' %}" class="dropdown-item">Cereals</a>
+                            </div>
+                             </div> </li>
+                 <li> <div class="nav-item dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-tasks white"></i> Our Services</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="#" class="dropdown-item">Mavuno Mkulima</a>
+                                <a href="{% url 'consumer' %}" class="dropdown-item">Mavuno Consumer</a>
+                            </div>
+                             </div></li>
+                 <li> <div class="nav-item dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user"></i>Profile</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'c_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'consumer' %}" class="dropdown-item">Login New Account</a>
+                            </div>
+                             </div></li>
+                 <li> <a href="{% url 'contact' %}" class="nav-item nav-link"><i class="fa fa-phone green"></i>Contact us</a> </li>
 
             </ul>
-                        <script src="{% static 'js/main.js' %}">
-                            let list = document.querySelectorAll(".sidebar li")
 
-                            function activelink() {
-                                list.forEach((item) => {
-                                    item.classlist.remove("")
-                                });
-                                this.classlist.add
-                            }
-
-
-                        </script>
                 </div>
                </div>
 
@@ -100,14 +108,14 @@
                       <div class="col-md-3 pt-3 mt-2" style="">
                                 <div class="card" style="background-color: #0d1425; border-bottom-color: #0d6efd; margin-left: 10px; position: relative">
                                     <div class="card-body text-white" style="font-size: large;">
-                                        <a href="{% url 'verify' %}"><i class="fa fa-shopping-bag bag"></i>Start Verification</a>
+                                        <a href="{% url 'verify' %}"><i class="fa fa-check-circle green"></i>Start Verification</a>
                                     </div>
                                 </div>
             </div>
                        <div class="col-md-3 pt-3 mt-2" style="">
                                 <div class="card" style="background-color: #0d1425; border-bottom-color: #0d6efd; margin-left: 10px; position: relative">
                                     <div class="card-body text-white" style="font-size: large;">
-                                        <a href="{% url 'panel' %}"><i class="fa fa-shopping-bag bag"></i> Upload Product</a>
+                                        <a href="{% url 'upload' %}"><i class="fa fa-shopping-basket"></i> Upload Product</a>
                                     </div>
                                 </div>
             </div>
@@ -116,7 +124,7 @@
                           <div class="col-md-3 pt-3 mt-2" style="">
                                 <div class="card" style="background-color: #0d1425; border-bottom-color: #0d6efd; margin-left: 10px; position: relative">
                                     <div class="card-body text-white" style="font-size: large;">
-                                        <a href=""><i class="fa fa-shopping-bag bag"></i> New Orders</a>
+                                        <a href="{% url 'p_view' %}"><i class="fa fa-shopping-cart"></i> Uploaded Products</a>
                                     </div>
                                 </div>
             </div>
@@ -140,9 +148,7 @@
                 <div class="row g-5">
                     <div class="col-lg-4 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Reservation</a>
+                        <a class="btn btn-link" href="{% url 'contact' %}">Contact Us</a>
                         <a class="btn btn-link" href="">Privacy Policy</a>
                         <a class="btn btn-link" href="">Terms & Condition</a>
                     </div>
@@ -172,12 +178,11 @@
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a class="border-bottom" href="#">Mavuno Digital</a>, All Right Reserved.
-
 							Designed By <a class="border-bottom" href="">Terry Waswa Sites</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="">Home</a>
+                                <a href="{% url 'home' %}">Home</a>
                                 <a href="">Cookies</a>
                                 <a href="">Help</a>
                                 <a href="">FQAs</a>

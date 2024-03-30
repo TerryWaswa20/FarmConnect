@@ -56,15 +56,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="" class="nav-item nav-link active">Home</a>
-                         <a href="{% url 'inbox' %}" class="nav-item nav-link">My Orders</a>
-                         <a href="#" class="nav-item nav-link">Inbox</a>
+                        <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
                         <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu m-0">
                                 <a href="{% url 'veges' %}" class="dropdown-item">Vegetables</a>
                                 <a href="{% url 'fruits' %}" class="dropdown-item">Fruits</a>
-                                <a href="{% url 'cereals' %}" class="dropdown-item">Cereals</a>
+                                <a href="{% url 'cereals' %}" class="dropdown-item active">Cereals</a>
                             </div>
                              </div>
                          <div class="nav-item dropdown">
@@ -74,7 +72,14 @@
                                 <a href="{% url 'consumer' %}" class="dropdown-item">Mavuno Consumer</a>
                             </div>
                              </div>
-                         <a href="{% url 'farmer' %}" class="nav-item nav-link">Sell On Mavuno</a>
+                        <div class="nav-item dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user"></i>Profile</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'c_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'consumer' %}" class="dropdown-item">Login New Account</a>
+                            </div>
+                             </div>
+
                 <a href="{% url 'contact' %}" class="nav-item nav-link">Contact us</a>
                         </div>
                     </div>
@@ -86,19 +91,19 @@
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Fresh Products<br>At your Door</h1>
-                            <p class="text-white animated slideInLeft mb-4 pb-2">Find you potential consumers and </p>
+                            <p class="text-white animated slideInLeft mb-4 pb-2"> Cereals Available For You </p>
                            <!-- <a href="{% url 'farmer' %}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Sell On Mavuno</a>-->
                         </div>
                         <div class="col-lg-6 text-center text-lg-end wow fadeIn" data-wow-delay="0.5">
                             <div class="row">
                                 <div class="col-12 text-center">
-                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/bg_img1.png' %}" alt="">
+                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/mavuno10.jpg' %}" alt="">
                                 </div>
                                 <div class="col-12 text-start" style="margin-top: -150px">
-                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/bg_img2.jpg' %}" alt="">
+                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/mavuno9.jpg' %}" alt="">
                                 </div>
                                  <div class="col-12 text-end" style="margin-top: -150px">
-                                        <img class="img-fluid w-130 rounded-circle bg-light p-3" src="{% static 'img/bg_img4.jpg' %}" alt="">
+                                        <img class="img-fluid w-130 rounded-circle bg-light p-3" src="{% static 'img/mavuno5.png' %}" alt="">
                             </div>
                       </div>
                     </div>
@@ -110,18 +115,19 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-5 align-items-center">
-        <!--<form method="get" action="">
-            <input type="text" name="search" placeholder="Search Author"><button type="submit">Search</button>
-        </form>-->
+
             {% for products in grain_list %}
                   <div class="col-sm-3 product">
-                <p><b>PRODUCT NAME:</b> {{ products.product_name }}<br><b>PRODUCT CATEGORY:</b> {{ products.product_category }}<br><b>PRODUCT DESCRIPTION:</b> {{ products.product_description }}<br><b>QUANTITY: </b>{{ products.quantity }}<br><b>PRICE:</b>{{ products.price}}<br> <b>DELIVERY MODE:</b> {{ products.delivery_mode}}</p>
 
-                  <br>
                   {% if products.product_image %}
                          <img src="{{ products.product_image.url }}" alt="product_image" class="product_image" height="100%" width="80%">
 
                   {% endif %}
+                   <p><b>PRODUCT NAME:</b> {{ products.product_name }}<br><b>PRICE:</b>{{ products.price}}</p>
+
+                  <br>
+                   <a href="{% url 'add_to_cart' products.id %}" class="btn btn-primary">Add to Cart</a>
+
                   </div>
             {% endfor %}
     </div>
@@ -134,9 +140,7 @@
                 <div class="row g-5">
                     <div class="col-lg-4 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Reservation</a>
+                        <a class="btn btn-link" href="{% url 'contact' %}">Contact Us</a>
                         <a class="btn btn-link" href="">Privacy Policy</a>
                         <a class="btn btn-link" href="">Terms & Condition</a>
                     </div>
@@ -166,13 +170,11 @@
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a class="border-bottom" href="#">Mavuno Digital</a>, All Right Reserved.
-
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
 							Designed By <a class="border-bottom" href="https://htmlcodex.com">Terry Waswa Sites</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="">Home</a>
+                                <a href="{% url 'home' %}">Home</a>
                                 <a href="">Cookies</a>
                                 <a href="">Help</a>
                                 <a href="">FQAs</a>

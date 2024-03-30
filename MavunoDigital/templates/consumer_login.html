@@ -56,9 +56,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="" class="nav-item nav-link active">Home</a>
-                         <a href="{% url 'inbox' %}" class="nav-item nav-link">My Orders</a>
-                         <a href="#" class="nav-item nav-link">Inbox</a>
+                        <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
                         <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu m-0">
@@ -67,14 +65,14 @@
                                 <a href="{% url 'cereals' %}" class="dropdown-item">Cereals</a>
                             </div>
                              </div>
-                         <div class="nav-item dropdown">
-                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                        <div class="nav-item dropdown">
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-user"></i>Profile</a>
                             <div class="dropdown-menu m-0">
-                                <a href="{% url 'product_add' %}" class="dropdown-item">Mavuno Mkulima</a>
-                                <a href="{% url 'consumer' %}" class="dropdown-item">Mavuno Consumer</a>
+                                <a href="{% url 'c_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'consumer' %}" class="dropdown-item">Login New Account</a>
                             </div>
                              </div>
-                         <a href="{% url 'farmer' %}" class="nav-item nav-link">Sell On Mavuno</a>
+
                 <a href="{% url 'contact' %}" class="nav-item nav-link">Contact us</a>
                         </div>
                     </div>
@@ -84,24 +82,11 @@
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container my-5 py-5">
                     <div class="row align-items-center g-5">
-                        <div class="col-lg-6 text-center text-lg-start">
-                            <h1 class="display-3 text-white animated slideInLeft">Fresh Products<br>At your Door</h1>
-                            <p class="text-white animated slideInLeft mb-4 pb-2">Find you potential consumers and </p>
+                        <div class="col-md-6 offset-md-3 text-center text-lg-start ">
+                            <h1 class="display-3 text-white animated slideInLeft">Login <br>To Enjoy Our Best Services</h1>
+                            <p class="text-white animated slideInLeft mb-4 pb-2">Welcome Back.....</p>
                            <!-- <a href="{% url 'farmer' %}" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Sell On Mavuno</a>-->
                         </div>
-                        <div class="col-lg-6 text-center text-lg-end wow fadeIn" data-wow-delay="0.5">
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/bg_img1.png' %}" alt="">
-                                </div>
-                                <div class="col-12 text-start" style="margin-top: -150px">
-                                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{% static 'img/bg_img2.jpg' %}" alt="">
-                                </div>
-                                 <div class="col-12 text-end" style="margin-top: -150px">
-                                        <img class="img-fluid w-130 rounded-circle bg-light p-3" src="{% static 'img/bg_img4.jpg' %}" alt="">
-                            </div>
-                      </div>
-                    </div>
                 </div>
                 </div>
             </div>
@@ -111,9 +96,9 @@
 
      <div class="container-xxl py-5">
             <div class="container">
-                 <div class="col-lg-6 wow fadeIn bg-success text-dark" data-wow-delay="0.1s">
+                 <div class="col-lg-6 offset-md-3 wow fadeIn bg-success text-dark" data-wow-delay="0.1s">
                      <h1 class="bg-success text-primary">Login To Your Account</h1>
-                     <form action="{% url 'f_login' %}" method=POST >
+                     <form action="{% url 'c_login' %}" method=POST >
 
 
 {% csrf_token %}

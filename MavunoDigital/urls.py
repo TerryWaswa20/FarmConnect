@@ -32,15 +32,30 @@ urlpatterns = [
     path('orders', views.orders, name='orders'),
     path('contact', views.contact, name='contact'),
     path('dash', views.f_dashboard, name='f_dash'),
+    path('dash_b', views.dashboard, name='dash_b'),
     path('send', views.send_message, name='send_message'),
     path('inbox', views.inbox, name='inbox'),
     path('verify', views.verification, name='verify'),
     path('panel', views.verify_farmer, name='panel'),
     path('token', views.token, name='token'),
     path('pay', views.pay, name='pay'),
+    path('product/<int:product_id>/', views.product_detail, name='product_detail'),
+    path('shipping', views.shipping_address, name='shipping'),
+    path('p_view', views.product_view, name='p_view'),
+    path('upload', views.product_upload, name='upload'),
 
 
+    path('cart_view', views.cart_view, name='cart_view'),
+    path('add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('delete_item/<int:item_id>/', views.delete_item, name='delete_item'),
+    path('delete_product/<int:item_id>/', views.delete_product, name='delete_product'),
+    path('payment', views.payment, name='payment'),
 
+#####mpesa
+    path('token', views.token, name='token'),
+    path('pay', views.pay, name='pay'),
+    path('stk', views.stk, name="stk")
+ 
 
 
 
