@@ -3,12 +3,12 @@ from MavunoDigital.forms import UserRegistrationForm, ProductForm, MessageForm, 
 from MavunoDigital.models import Product, Message, Farmer, CartItem, ShippingAddress
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-import requests
 from requests.auth import HTTPBasicAuth
 import json
 from django.http import JsonResponse
 from django.views import View
 from . credentials import MpesaAccessToken, LipanaMpesaPpassword
+import requests
 
 
 def home(request):

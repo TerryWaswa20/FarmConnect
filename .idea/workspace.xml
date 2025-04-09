@@ -5,33 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f496efd4-c178-499f-9ba0-922fce004734" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FarmConnect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FarmConnect.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmConnect/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FarmConnect/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MavunoDigital/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/cereals.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/cereals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/consumer_cart.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/consumer_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/consumer_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/farmer_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/farmer_dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/farmer_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/farmer_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/fruits.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/fruits.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/pay.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/product_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/product_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/product_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/sell_on.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/sell_on.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/templates/vegetables.html" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/templates/vegetables.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MavunoDigital/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/MavunoDigital/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +95,12 @@
       <workItem from="1711441499438" duration="2391000" />
       <workItem from="1711472246038" duration="3461000" />
       <workItem from="1711483191148" duration="6595000" />
+      <workItem from="1711754872553" duration="920000" />
+      <workItem from="1715500623987" duration="717000" />
+      <workItem from="1715501441689" duration="763000" />
+      <workItem from="1715502288379" duration="278000" />
+      <workItem from="1733439334301" duration="992000" />
+      <workItem from="1733440565026" duration="96000" />
     </task>
     <servers />
   </component>
